@@ -15,7 +15,7 @@ bot.use((ctx, next) => {
   return next(ctx);
 });
 
-bot.on('text', {reply, me, message, from, chat} => {
+bot.on('text', ({reply, me, message, from, chat}) => {
   let text = message.text;
   console.log(text);
   reply(`from@${me} ${chat.type}:${chat.username || chat.title}`);
