@@ -16,8 +16,9 @@ bot.use((ctx, next) => {
 });
 
 bot.on('text', {reply, me, message, from, chat} => {
-  console.log(me, message, from, chat);
-  reply(`>>> ${chat.type}:${chat.username || chat.title}`);
+  let text = message.text;
+  console.log(text);
+  reply(`from@${me} ${chat.type}:${chat.username || chat.title}`);
 });
 
 bot.startWebhook(route, null, config.port);
