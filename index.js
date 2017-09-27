@@ -1,5 +1,5 @@
-const config = require('./libs/config.js');
-const TelegramBot = require('node-telegram-bot-api');
+const config = require('./libs/config');
+const douban = require('./libs/douban');
 const Telegraf = require('telegraf');
 
 const route = `/phpzbot${config.token}`;
@@ -17,7 +17,7 @@ bot.use((ctx, next) => {
   return next(ctx);
 });
 
-bot.on('text', ({reply, me, message, from, chat}) => {
+bot.on('text', async ({reply, me, message, from, chat}) => {
   let text = message.text;
   let chat_type = chat.type;
   let msg_type = message.entities ? message.entities[0].type : 'text';
@@ -38,7 +38,7 @@ bot.on('text', ({reply, me, message, from, chat}) => {
   switch (msg_type) {
     case 'bot_command':
       let cmd = text.match(/\/([^@\s]+)/)[1];
-      let parms = text.split(/\s+/);
+      let params = text.split(/\s+/);
       switch (cmd) {
         case 'start':
           result += '`start` command...';
@@ -46,13 +46,14 @@ bot.on('text', ({reply, me, message, from, chat}) => {
         case 'kill':
           result += '`kill` command...';
           break;
+        case 'isbn':
+          let name = params[1];
+          result += await douban.isbn(name).title; 
+          douban.
+          break;
         default:
           result += 'unknown command...';
           break;
-      }
-      parms && parms.shift();
-      if (parms.length) {
-        result += parms;
       }
       break;
     case 'text':

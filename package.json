@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dofy/PHPzBot#readme",
   "dependencies": {
+    "request": "^2.83.0",
     "telegraf": "^3.11.1"
   }
 }
