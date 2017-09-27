@@ -20,7 +20,7 @@ bot.use((ctx, next) => {
 bot.on('text', ({reply, me, message, from, chat}) => {
   let text = message.text;
   let type = message.entities ? message.entities[0].type : 'text';
-  console.log(type > text);
+  console.log(type, text);
   reply(`from @${me} ${chat.type}:${chat.username || chat.title}`);
 });
 
