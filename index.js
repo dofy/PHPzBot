@@ -28,7 +28,7 @@ bot.on('text', ({reply, me, message, from, chat}) => {
     case 'supergroup':
     case 'group':
       inGroup = true;
-      result += `@from.username\n`;
+      result += `@${from.username}\n`;
       break;
     case 'private':
     default:
@@ -51,7 +51,7 @@ bot.on('text', ({reply, me, message, from, chat}) => {
       }
       break;
     case 'text':
-      result += `echo _${text}_`;
+      result += `\`echo\` _${text}_`;
     default:
       break;
   }
