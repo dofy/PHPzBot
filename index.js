@@ -48,8 +48,8 @@ bot.on('text', async ({reply, me, message, from, chat}) => {
           break;
         case 'isbn':
           let name = params[1];
-          result += await douban.isbn(name).title; 
-          douban.
+          let book = await douban.isbn(name);
+          result += book.title;
           break;
         default:
           result += 'unknown command...';

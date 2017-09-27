@@ -8,7 +8,7 @@ function req(api, method, data) {
       uri: `${url}${api}`
     }, (err, res, body) => {
       if (err) return reject(err);
-      resolve(body);
+      resolve(JSON.parse(body));
     });
   });
 }
