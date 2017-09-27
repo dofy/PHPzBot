@@ -55,7 +55,9 @@ bot.on('text', ({reply, me, message, from, chat}) => {
     default:
       break;
   }
-  reply(result);
+  reply(result, {
+    parse_mode: 'Markdown'
+  });
 });
 
 bot.startWebhook(route, null, config.port);
