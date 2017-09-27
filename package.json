@@ -21,9 +21,6 @@
   },
   "homepage": "https://github.com/dofy/PHPzBot#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.15.5",
-    "node-telegram-bot-api": "^0.28.0",
     "telegraf": "^3.11.1"
   }
 }
