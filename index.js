@@ -38,6 +38,7 @@ bot.on('text', ({reply, me, message, from, chat}) => {
   switch (msg_type) {
     case 'bot_command':
       let cmd = text.match(/\/([^@]+)/)[1];
+      let parms = text.split(/\s+/);
       switch (cmd) {
         case 'start':
           result += '`start` command...';
@@ -48,6 +49,10 @@ bot.on('text', ({reply, me, message, from, chat}) => {
         default:
           result += 'unknown command...';
           break;
+      }
+      parms && parms.unshift();
+      if (parms.length) {
+        result += parms;
       }
       break;
     case 'text':
