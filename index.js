@@ -4,7 +4,9 @@ const Telegraf = require('telegraf');
 
 const route = `/phpzbot${config.token}`;
 
-const bot = new Telegraf(config.token);
+const bot = new Telegraf(config.token, {
+  username: config.username
+});
 
 bot.catch(err => {
   console.error(err);
