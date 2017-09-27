@@ -50,7 +50,7 @@ bot.on('text', ({reply, me, message, from, chat}) => {
           result += 'unknown command...';
           break;
       }
-      parms && parms.unshift();
+      parms && parms.shift();
       if (parms.length) {
         result += parms;
       }
