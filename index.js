@@ -19,8 +19,9 @@ bot.use((ctx, next) => {
 
 bot.on('text', ({reply, me, message, from, chat}) => {
   let text = message.text;
-  let type = message.entities ? message.entities[0].type : 'text';
-  console.log(type, text);
+  let chat_type = chat.type;
+  let msg_type = message.entities ? message.entities[0].type : 'text';
+  console.log(msg_type, chat_type, text);
   reply(`from @${me} ${chat.type}:${chat.username || chat.title}`);
 });
 
