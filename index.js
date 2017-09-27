@@ -21,8 +21,41 @@ bot.on('text', ({reply, me, message, from, chat}) => {
   let text = message.text;
   let chat_type = chat.type;
   let msg_type = message.entities ? message.entities[0].type : 'text';
+  let inGroup = false;
   console.log(msg_type, chat_type, text);
-  reply(`from @${me} ${chat.type}:${chat.username || chat.title}`);
+  let result = '';
+  switch (chat_type) {
+    case 'supergroup':
+    case 'group':
+      inGroup = true;
+      result += `@from.username\n`;
+      break;
+    case 'private':
+    default:
+      inGroup = false;
+      break;
+  }
+  switch (msg_type) {
+    case 'bot_command':
+      let cmd = text.match(/\/([^@]+)/)[1];
+      switch (cmd) {
+        case 'start':
+          result += '`start` command...';
+          break;
+        case 'kill':
+          result += '`kill` command...';
+          break;
+        default:
+          result += 'unknown command...';
+          break;
+      }
+      break;
+    case 'text':
+      result += `echo _${text}_`;
+    default:
+      break;
+  }
+  reply(result);
 });
 
 bot.startWebhook(route, null, config.port);
